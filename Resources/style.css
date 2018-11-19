@@ -1,6 +1,6 @@
 @font-face {
     font-family: "False Prospect";
-    src: url('/Resources/falseprospect.ttf');
+    src: url('/Resources/falseprospect.ttf') format('truetype');
 }
 
 :root{

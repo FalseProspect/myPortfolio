@@ -33,9 +33,16 @@ setTimeout(()=>{
     keyboardQue.play()
 }, 1000)
 
+let check = document.getElementById('themeSlider')
+
+check.addEventListener('click',()=>{
+    toggleLightMode()
+})
+
 //Light mode toggle
 function toggleLightMode(){
     lightMode = !lightMode
+    check.checked = lightMode ? true : false;
     document.documentElement.style.setProperty('--backColor', lightMode ? '#eee' : '#0a0a0a')
     document.documentElement.style.setProperty('--textColor', lightMode ? '#222' : '#eee')
     document.body.style.setProperty('background', lightMode ? '#eee' : 'linear-gradient(132deg, #000, #121212)')
@@ -45,6 +52,7 @@ function toggleLightMode(){
     cue.play()
     setTimeout(()=>{cue.parentNode.removeChild(cue)},170)
 }
+
 
 
 let mainLink = document.getElementById('mainLink')
@@ -63,6 +71,7 @@ contactLink.addEventListener('mouseout',()=>{contactLink.innerHTML = 'Contact'})
 
 
 document.body.addEventListener('keydown',(e)=>{
+    // console.log(e.key)
     if(e.key === "l")toggleLightMode()
 })
 
@@ -127,6 +136,7 @@ document.getElementById('contactLink').addEventListener('click', ()=>{
 function showContacts(){
     contactsOpen = !contactsOpen
     console.log(contactsOpen)
-    document.getElementById('contacts').style.setProperty('transform', contactsOpen ? 'translateX(0px)' : 'translateX(110px)')
+    let contacts = document.getElementById('contacts')
+    contacts.style.setProperty('transform', contactsOpen ? 'translateX(0px)' : 'translateX(110px)')
 }
  

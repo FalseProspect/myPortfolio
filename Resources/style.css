@@ -583,7 +583,7 @@ h1 span{
     }
 
     .itemTitle{
-        top: 250px;
+        top: 270px;
     }
 
     .itemImg{
@@ -592,7 +592,7 @@ h1 span{
     }
     .itemGit{
         right: 0;
-        top: 250px;
+        top: 280px;
     }
     .itemGit svg{
         height: 25px;
@@ -601,7 +601,7 @@ h1 span{
 
     .itemDescription{
         left: 0;
-        top: 325px;
+        top: 345px;
     }
     .itemDescription p{
         max-height: 260px;

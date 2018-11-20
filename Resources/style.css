@@ -607,11 +607,23 @@ h1 span#name{
         height: 40px;
         width: 40px;
     }
+    h1 span#fp{
+        margin-left: 3.5px;
+    }
+    h1 span#name{
+        margin-left: 6px;
+    }
 }
 
 @media screen and (max-width: 540px){
     #landing{
         font-size: .5rem;
+    }
+    h1 span#fp{
+        margin-left: 2.5px;
+    }
+    h1 span#name{
+        margin-left: 4.5px;
     }
 }
 

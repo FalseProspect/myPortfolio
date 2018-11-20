@@ -96,9 +96,7 @@ function setArrowOpacity(arrow){
 }
 
 
-function updateArrowVisibility(){
-    [].forEach.call(arrows, setArrowOpacity);
-}
+function updateArrowVisibility(){[].forEach.call(arrows, setArrowOpacity);}
 
 let arrows = document.getElementsByClassName('arrow');
 [].forEach.call(arrows, addArrowHandlers);

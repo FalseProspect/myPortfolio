@@ -50,7 +50,7 @@ function toggleLightMode(){
     cue.setAttribute('src','Resources/Media/EnterKey.WAV');
     document.body.appendChild(cue);
     cue.play()
-    setTimeout(()=>{cue.parentNode.removeChild(cue)},170)
+    cue.onended = ()=>{cue.parentNode.removeChild(cue)}
 }
 
 

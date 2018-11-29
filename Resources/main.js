@@ -26,7 +26,6 @@ function textAppear(){
     document.getElementById('quill').style.visibility = "visible"
 }
 
-
 //Typing Sequence
 setTimeout(()=>{
     typingSequence();
@@ -53,6 +52,24 @@ function toggleLightMode(){
     cue.onended = ()=>{cue.parentNode.removeChild(cue)}
 }
 
+const theme = function(mainColor){
+    this.mainColor = mainColor;
+};
+
+let themeIndex = 0;
+
+const themes = [
+    new theme('#eee'),
+    new theme('#FEC601'),
+    new theme('#E84855'),
+    new theme('#FFFD82'),
+    new theme('#1B2CC1')
+]
+
+document.getElementById('accentColorPicker').addEventListener('click',()=>{
+    themeIndex !== themes.length - 1 ? themeIndex ++ : themeIndex = 0
+    document.documentElement.style.setProperty('--accentColor', themes[themeIndex].mainColor)
+})
 
 
 let mainLink = document.getElementById('mainLink')

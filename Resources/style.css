@@ -6,8 +6,9 @@
 :root{
     --backColor: #0a0a0a;
     --textColor: #eee;
-    --accentColor: #FEC601;
+    --accentColor: #eee;
     /* https://coolors.co/2364aa-3da5d9-73bfb8-fec601-ea7317 */
+    /* FEC601 */
 }
 
 *{
@@ -225,8 +226,10 @@ h1 span{
     background: var(--accentColor);
     color: #222;
     font-family: "Poppins";
-    padding-top: -4px;
-    padding-bottom: -4px;
+    /* padding-top: -4px; */
+    /* padding-bottom: -4px; */
+    padding: 0px 10px;
+    /* padding-left: 10px; */
     font-weight: bold;
 }
 h1 span#fp{
@@ -322,6 +325,7 @@ h1 span#name{
     max-height: 260px;
     overflow-y: auto;
     padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .itemResourceImg{
@@ -411,21 +415,35 @@ h1 span#name{
 }
 
 .mediaContainter{
-    margin-top: 40px;
-    margin-left: 270px;
+    padding-top: 40px;
+    padding-bottom: 10px;
+    /* margin-left: 270px; */
     width: auto;
     height: 240px;
 }
+
+.mediaContainter::before{
+    position: absolute;
+    content: "Media";
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: -35px;
+}
+
 .sitePortal{
     width: 640px;
-    /* background-image: url('/Resources/Media/myDayAnim.gif'); */
     background-position: top;
     background-repeat: no-repeat;
     background-size: 100% 220%;
     position: relative;
     height: 250px;
     border-radius: 10px;
-    left: 40px;
+    left: 0px;
     right: 0;
     top: 0px;
     bottom: 0;
@@ -667,7 +685,7 @@ h1 span#name{
     }
 
     .itemTitle{
-        top: 270px;
+        top: 275px;
     }
 
     .itemImg{
@@ -778,7 +796,7 @@ h1 span#name{
     left: 4px;
     width: 20px;
     height: 10px;
-    color: #fff;
+    color: var(--backColor);
     font-size: 10px;
     font-weight: bold;
     text-align: center;
@@ -806,4 +824,13 @@ h1 span#name{
 
 #button-3 .checkbox:checked ~ .layer{
     background-color: rgba(255, 255, 255, .8);
+}
+
+#accentColorPicker{
+    position: absolute;
+    top: 65px;
+    width: 70px;
+    height: 40px;
+    background: var(--accentColor);
+    border: white solid 2px;
 }

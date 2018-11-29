@@ -223,8 +223,8 @@ a:active{
 }
 
 h1 span{
-    background: var(--accentColor);
-    color: #222;
+    background: var(--textColor);
+    color: var(--backColor);
     font-family: "Poppins";
     /* padding-top: -4px; */
     /* padding-bottom: -4px; */
@@ -828,9 +828,9 @@ h1 span#name{
 
 #accentColorPicker{
     position: absolute;
-    top: 65px;
-    width: 70px;
-    height: 40px;
+    top: 60px;
+    width: 30px;
+    height: 30px;
     background: var(--accentColor);
     border: white solid 2px;
 }

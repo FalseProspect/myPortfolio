@@ -32,3 +32,18 @@ setTimeout(()=>{
   typingSequence();
   keyboardQue.play();
 }, 1000);
+
+window.addEventListener('resize', ()=>{
+  resizeItems();
+})
+
+window.onload = resizeItems()
+
+function resizeItems(){
+  let items = document.getElementsByClassName("item");
+  sw = screen.width / 500;
+  for (elem in items){
+    items.item(elem).style.maxWidth = `${100/Math.floor(sw)}vw`;
+    items.item(elem).style.height = (items.item(elem).offsetWidth);
+  }
+}

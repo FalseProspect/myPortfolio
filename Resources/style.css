@@ -130,9 +130,20 @@ section#container{
   min-width: 500px;
   height: auto;
   min-height: 500px;
-  flex: 1
+  flex: 1;
+  position: relative;
+  overflow: hidden;
 }
 
+.item img{
+  max-width: 100%;
+  transition: all 0.3s;
+}
+
+.item:hover img{
+  max-width: 100%;
+  transform: scale(1.1);
+}
 
 
 @media screen and (max-width: 520px){

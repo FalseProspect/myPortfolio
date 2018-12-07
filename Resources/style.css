@@ -125,7 +125,7 @@ section#container{
 }
 
 .item{
-  /* background: var(--accentColor); */
+  background: var(--accentColor);
   border: none solid var(--backColor);
   width: auto;
   min-width: 500px;
@@ -138,12 +138,14 @@ section#container{
 
 .item img{
   max-width: 100%;
+  opacity: 1;
   transition: all 0.3s;
 }
 
 .item:hover img{
   max-width: 100%;
   transform: scale(1.05);
+  /* opacity: 0; */
 }
 
 

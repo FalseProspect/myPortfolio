@@ -55,7 +55,7 @@ header{
     color: var(--textColor);
   }
   
-  #titleHeader{
+#titleHeader{
     top: 30px;
     min-width: 160px;
     left: 35px;
@@ -116,6 +116,12 @@ a:hover,
 a:active{
   color: var(--accentColor);
   text-decoration: underline;
+}
+
+section#display{
+    height: 0;
+    background: red;
+    transition: height 1s ease;
 }
 
 section#container{

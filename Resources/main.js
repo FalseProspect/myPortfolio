@@ -7,6 +7,8 @@ let lightMode = false;
 //Prospect Text
 let prospect = 'PROSPECT';
 let textChar = 0;
+//Display Section
+let display = document.getElementById('display');
 
 document.body.focus();
 
@@ -47,3 +49,12 @@ function resizeItems(){
     items.item(elem).style.height = (items.item(elem).offsetWidth);
   }
 }
+
+function sizeDisplay(size){
+  display.style.height = size;
+}
+
+document.body.addEventListener('keydown',(k)=>{
+  if (k.key === 'o') sizeDisplay('100vh');
+  else if (k.key === 'c') sizeDisplay('0');
+})

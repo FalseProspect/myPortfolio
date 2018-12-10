@@ -15,6 +15,8 @@ let projects = [
   {name:'Intruder', image:'Resources/Media/IntruderTitle1-1.png', color: 'var(--accentColor)'},
   {name:'Bad Battle', image:'Resources/Media/BadBattleTitle1-1.png', color: 'var(--accentColor)'}
 ]
+//Display Section
+let display = document.getElementById('display');
 
 document.body.focus();
 
@@ -93,3 +95,12 @@ function resizeItems(){
     items.item(elem).style.height = (items.item(elem).offsetWidth);
   }
 }
+
+function sizeDisplay(size){
+  display.style.height = size;
+}
+
+document.body.addEventListener('keydown',(k)=>{
+  if (k.key === 'o') sizeDisplay('100vh');
+  else if (k.key === 'c') sizeDisplay('0');
+})

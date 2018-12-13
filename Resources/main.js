@@ -100,21 +100,6 @@ function makeElement(elemTag, classname, id){
   return elem;
 }
 
-<<<<<<< HEAD
-let mainLink = document.getElementById('mainLink')
-let resumeLink = document.getElementById('resumeLink')
-let contactLink = document.getElementById('contactLink')
-
-mainLink.addEventListener('mouseover',()=>{mainLink.innerHTML = mainLink.innerHTML + '<span class="blinking-cursor">_</span>'})
-mainLink.addEventListener('mouseout',()=>{mainLink.innerHTML = 'Main'})
-
-resumeLink.addEventListener('mouseover',()=>{resumeLink.innerHTML = resumeLink.innerHTML + '<span class="blinking-cursor">_</span>'})
-resumeLink.addEventListener('mouseout',()=>{resumeLink.innerHTML = 'Resume'})
-
-contactLink.addEventListener('mouseover',()=>{contactLink.innerHTML = contactLink.innerHTML + '<span class="blinking-cursor">_</span>'})
-contactLink.addEventListener('mouseout',()=>{contactLink.innerHTML = 'Contact'})
-
-=======
 //Create and Render Project Items
 function createItems(){
   let container = document.getElementById('container');
@@ -126,7 +111,6 @@ function createItems(){
 
     let overlay = makeElement('div','itemOverlay')
     overlay.style.background = proj.color;
->>>>>>> v2
 
     let name = makeElement('h1','itemName');
     name.innerText = proj.name;

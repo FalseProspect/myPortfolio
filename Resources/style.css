@@ -148,30 +148,9 @@ section#display{
   padding: 1rem 0;
 }
 
-<<<<<<< HEAD
-#contactscontainer li{
-    padding: 3px 0;
-    text-align: center;
-    list-style: none;
-}
-
-h1 span{
-    background: var(--textColor);
-    color: var(--backColor);
-    font-family: "Poppins";
-    /* padding-top: -4px; */
-    /* padding-bottom: -4px; */
-    padding: 0px 10px;
-    /* padding-left: 10px; */
-    font-weight: bold;
-}
-h1 span#fp{
-    margin-left: 4px;
-=======
 #infoContainer span#fp{
   font-family: "False Prospect";
   font-size: 1.5rem;
->>>>>>> v2
 }
 #infoContainer span#doxstop{
 color: red;
@@ -335,14 +314,4 @@ section#container{
     grid-column: 2/3;
   }
 
-<<<<<<< HEAD
-#accentColorPicker{
-    position: absolute;
-    top: 60px;
-    width: 30px;
-    height: 30px;
-    background: var(--accentColor);
-    border: white solid 2px;
-=======
->>>>>>> v2
 }

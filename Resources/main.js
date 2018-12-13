@@ -1,57 +1,106 @@
 //Typing Audio Cue
-let keyboardQue = document.getElementById('typeCue')
+let keyboardQue = document.getElementById('typeCue');
 //Enter Key Audio Cue
-let keyEnterQue = document.getElementById('enterCue')
+let keyEnterQue = document.getElementById('enterCue');
 //Light Mode Status
-let lightMode = false
-//Text
-let text = 'PROSPECT'
-let textChar = 0
+let lightMode = false;
+//Prospect Text
+let prospect = 'PROSPECT';
+let textChar = 0;
 
-document.body.focus();
+//Focused object
+let targetObj;
 
-function typingSequence(){
-    if(textChar === text.length) return setTimeout(()=>{textAppear()},270)
+//Display Section
+let display = document.getElementById('display');
+let mediaControls = document.getElementById('mediaControls');
+let mediaSlide = 0;
+
+class Display {
+  
+  open(height){
+    height = height ? `${height}px` : '500vh';
+    display.style.visibility = 'visible';
+    display.style.opacity = '1';
+    display.style.maxHeight = height;
+  }
+
+  close(){
+    display.style.visibility = 'hidden';
+    display.style.opacity = '0';
+    display.style.maxHeight = '0px';
+  }
+
+  render(proj){
+    let title = display.children.item(0).children.item(0);
+    let info = display.children.item(0).children.item(1);
+    let img = display.children.item(1).children.item(0);
+
+    //Reset image slide
+    mediaSlide = 0;
+    //Scroll to Display
+    window.scrollTo({top:30,behavior: "smooth"});
+
+    //Fade-Out, Update Content, and Fade-In Content
+    display.classList.remove('fadein');
+    display.style.opacity='0';
     setTimeout(()=>{
-    document.getElementById('prospectText').innerText += text[textChar]
-    textChar++
+      display.classList.add('fadein');
+      display.style.opacity='1';
+      //Update Inner Text
+      title.innerHTML = proj.name;
+      info.innerHTML = proj.info;
+      img.setAttribute('src', proj.media[0]);
+      document.getElementById('mediaControls').style.visibility = proj.media[1] ? 'visible' : 'hidden';
+      //Update the Media Contols with Project Color Accent
+      document.documentElement.style.setProperty('--projectColor', proj.color);
+      //Display is open
+      this.open();
+    },700);
+  }
+
+  renderImg(){
+    let img = display.children.item(1).children.item(0);
+    img.setAttribute('src', targetObj.media[mediaSlide]);
+  }
+
+}
+
+let infoDisplay = new Display;
+
+// Type Sequnce Start
+function typingSequence(){
+  if(textChar === prospect.length) return setTimeout(()=>{textAppear()},270);
+  setTimeout(()=>{
+    document.getElementById('prospectText').innerText += prospect[textChar];
+    textChar++;
     typingSequence();
-    }, 150)
+  }, 150);
 }
 
 //Enter Sequence
 function textAppear(){
-    keyEnterQue.play()
-    document.getElementById('falseText').style.visibility = "visible"
-    document.getElementById('quill').style.visibility = "visible"
+  keyEnterQue.play();
+  document.getElementById('falseText').style.visibility = "visible";
+  document.getElementById('quill').style.visibility = "visible";
+  document.getElementById('headerLinks').style.opacity = "1";
 }
 
-//Typing Sequence
-setTimeout(()=>{
-    typingSequence();
-    keyboardQue.play()
-}, 1000)
+//Typing Sequence Start Delay
+document.onfocus = setTimeout(()=>{
+  typingSequence();
+  keyboardQue.play();
+}, 1000);
 
-let check = document.getElementById('themeSlider')
-
-check.addEventListener('click',()=>{
-    toggleLightMode()
-})
-
-//Light mode toggle
-function toggleLightMode(){
-    lightMode = !lightMode
-    check.checked = lightMode ? true : false;
-    document.documentElement.style.setProperty('--backColor', lightMode ? '#eee' : '#0a0a0a')
-    document.documentElement.style.setProperty('--textColor', lightMode ? '#222' : '#eee')
-    document.body.style.setProperty('background', lightMode ? '#eee' : 'linear-gradient(132deg, #000, #121212)')
-    let cue = document.createElement('audio')
-    cue.setAttribute('src','Resources/Media/EnterKey.WAV');
-    document.body.appendChild(cue);
-    cue.play()
-    cue.onended = ()=>{cue.parentNode.removeChild(cue)}
+//Make element helper
+function makeElement(elemTag, classname, id){
+  let elem = document.createElement(elemTag);
+  classname ? elem.setAttribute('class',classname) : 0;
+  id ? elem.id = id : 0; 
+  return elem;
 }
 
+<<<<<<< HEAD
 let mainLink = document.getElementById('mainLink')
 let resumeLink = document.getElementById('resumeLink')
 let contactLink = document.getElementById('contactLink')
@@ -65,73 +114,75 @@ resumeLink.addEventListener('mouseout',()=>{resumeLink.innerHTML = 'Resume'})
 contactLink.addEventListener('mouseover',()=>{contactLink.innerHTML = contactLink.innerHTML + '<span class="blinking-cursor">_</span>'})
 contactLink.addEventListener('mouseout',()=>{contactLink.innerHTML = 'Contact'})
 
+=======
+//Create and Render Project Items
+function createItems(){
+  let container = document.getElementById('container');
 
+  projects.forEach((proj)=>{
+    let projectName = proj.id;
+    let item = makeElement('div','item');
+    item.id = projectName;
 
-document.body.addEventListener('keydown',(e)=>{
-    // console.log(e.key)
-    if(e.key === "l")toggleLightMode()
+    let overlay = makeElement('div','itemOverlay')
+    overlay.style.background = proj.color;
+>>>>>>> v2
+
+    let name = makeElement('h1','itemName');
+    name.innerText = proj.name;
+    let description = makeElement('h2','itemDescription');
+    description.innerText = proj.infoShort;
+    overlay.appendChild(name);
+    overlay.appendChild(description);
+    
+    let image = makeElement('img')
+    let iframe = makeElement ('div');
+
+    image.setAttribute('src',proj.media[0]);
+    item.appendChild(overlay);
+    item.appendChild(image);
+    container.appendChild(item);
+    item.addEventListener('click',()=>{
+      targetObj = proj;
+      // history.pushState({proj}, `Project: ${projectName}`,`./${projectName}`);
+      infoDisplay.render(proj);
+    });
+  });
+}
+
+//Display Image Controls
+mediaControls.addEventListener('click', (c)=>{
+  if(c.target.id === 'controlRight'){
+    mediaSlide = (mediaSlide + 1 < targetObj.media.length ? mediaSlide + 1 : 0);
+  } 
+  if(c.target.id === 'controlLeft'){
+    mediaSlide = (mediaSlide - 1 >= 0 ? mediaSlide - 1 : targetObj.media.length - 1);
+  }
+  infoDisplay.renderImg();
+  return 0;
 })
 
-function addArrowHandlers(elem){
-    elem.addEventListener('click',(e)=>{
-        sliderDirection(e.target.parentNode,elem.getAttribute('data-direction'))
-})}
+document.getElementById('about').addEventListener('click',()=>{
+  targetObj = about;
+  infoDisplay.render(targetObj);
+})
 
-function setArrowOpacity(arrow){
-    let index = parseInt(arrow.parentNode.getAttribute('data-slideNum'))
-    let direction = arrow.getAttribute('data-direction')
-
-    switch (direction){
-        case 'next':
-            arrow.style.setProperty('opacity', index !== 2 ? '1' : '0');
-            arrow.style.opacity;
-            break;
-        case 'back':
-            arrow.style.setProperty('opacity', index !== 0 ? '1' : '0');
-            break;
-    }
-}
+document.getElementById('projects').addEventListener('click',()=>{
+  targetObj = undefined;
+  infoDisplay.close();
+})
 
 
-function updateArrowVisibility(){[].forEach.call(arrows, setArrowOpacity);}
 
-let arrows = document.getElementsByClassName('arrow');
-[].forEach.call(arrows, addArrowHandlers);
-updateArrowVisibility();
+//Not sure how to use PopState with github pages because of routing
+history.scrollRestoration = 'manual';
 
-Math.clamp = function(num, min, max) {return num <= min ? min : num >= max ? max : num;}
+// window.addEventListener('popstate', e=> {
+//   if(e.state === null) return; infoDisplay.close();
+//   render(e.state.proj);
+//   window.scrollTo({top:30,behavior: "smooth"});
+// })
 
-function sliderDirection(elem,direction){
-    if(!direction){return}
-    direction = direction === "next" ? 1 : -1
-    let slideArr = [...elem.getElementsByClassName('slide')]
-    let lastIndex = parseInt(elem.getAttribute('data-slideNum'))
-    let newIndex = Math.clamp((lastIndex + direction),0,2)
-    elem.setAttribute('data-slideNum',newIndex)
-    
-    function changeSlide(last,next){
-        slideArr[last].style.setProperty('transition', 'ease 1s transform, ease .3s opacity')
-        slideArr[last].style.setProperty('transform', direction === 1 ? 'translateX(-110%)' : 'translateX(110%)')
-        slideArr[last].style.setProperty('opacity', '0')
-        
-        slideArr[next].style.setProperty('transition', 'ease 1s transform, ease .3s opacity')
-        slideArr[next].style.setProperty('transform', 'translateX(0)')
-        slideArr[next].style.setProperty('opacity', '1')
-    }
+//Create Items
 
-    changeSlide(lastIndex,newIndex)
-    updateArrowVisibility();
-}
-
-let contactsOpen = false;
-document.getElementById('contactLink').addEventListener('click', ()=>{
-    showContacts()
-});
-
-function showContacts(){
-    contactsOpen = !contactsOpen
-    console.log(contactsOpen)
-    let contacts = document.getElementById('contacts')
-    contacts.style.setProperty('transform', contactsOpen ? 'translateX(0px)' : 'translateX(110px)')
-}
- 
+createItems()

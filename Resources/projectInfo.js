@@ -113,12 +113,12 @@ let about =
     infoShort: `About Keith Rose`,
     info:
     `<b>About:</b><br>
-      My name is Keith Rose. I'm from New Jesery. <br>
-      I like creating creative media such as web applications and video games. <br>
-      I work under the allias/agent <span id="fp">[FALSE] PROSPECT</span>. <br><br>
+      My name is Keith Rose and I'm from New Jesery. <br><br>
+      I'm a avid lover of technology, creative media, and anything software. <br><br>
+      I typically work under the allias/agent <span id="fp">[FALSE] PROSPECT</span>. <br><br>
 
     <b>Contacts:</b><br><br>
-    - Krose@falseprospect.com<br><br>
+    - <a href="mailto:krose@falseprospect.com">krose@falseprospect.com</a><br><br>
     - 609-954-3986<br><br>
     - Falseprospect.com<br><br>
     - <strong><a href="https://www.youtube.com/channel/UC8En5066aTr431za71f2pAQ/about" target="_blank">Youtube</a></strong><br><br>

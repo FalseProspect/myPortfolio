@@ -194,6 +194,7 @@ section#container{
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px,1fr));
+  opacity: 0;
   transition: opacity .3s ease;
 }
 

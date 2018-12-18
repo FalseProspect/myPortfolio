@@ -175,7 +175,6 @@ history.scrollRestoration = 'manual';
 // })
 
 //Create Items
-document.getElementById('container').style.opacity = "0";
 createItems();
 
 loadInto();

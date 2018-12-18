@@ -3,7 +3,7 @@ let keyboardQue = document.getElementById('typeCue');
 //Enter Key Audio Cue
 let keyEnterQue = document.getElementById('enterCue');
 //Light Mode Status
-let lightMode = false;
+let hasFocus = false;
 //Prospect Text
 let prospect = 'PROSPECT';
 let textChar = 0;
@@ -51,6 +51,7 @@ class Display {
       title.innerHTML = proj.name;
       info.innerHTML = proj.info;
       img.setAttribute('src', proj.media[0]);
+
       document.getElementById('mediaControls').style.visibility = proj.media[1] ? 'visible' : 'hidden';
       //Update the Media Contols with Project Color Accent
       document.documentElement.style.setProperty('--projectColor', proj.color);
@@ -84,13 +85,19 @@ function textAppear(){
   document.getElementById('falseText').style.visibility = "visible";
   document.getElementById('quill').style.visibility = "visible";
   document.getElementById('headerLinks').style.opacity = "1";
+  document.getElementById('container').style.opacity = "1";
 }
 
 //Typing Sequence Start Delay
-document.onfocus = setTimeout(()=>{
-  typingSequence();
-  keyboardQue.play();
-}, 1000);
+
+
+function loadInto(){
+  setTimeout(()=>{
+    typingSequence();
+    keyboardQue.play();
+  }, 1000);
+}
+
 
 //Make element helper
 function makeElement(elemTag, classname, id){
@@ -168,5 +175,7 @@ history.scrollRestoration = 'manual';
 // })
 
 //Create Items
+document.getElementById('container').style.opacity = "0";
+createItems();
 
-createItems()
+loadInto();

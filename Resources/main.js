@@ -17,7 +17,6 @@ let mediaControls = document.getElementById('mediaControls');
 let mediaSlide = 0;
 
 class Display {
-  
   open(height){
     height = height ? `${height}px` : '500vh';
     display.style.visibility = 'visible';

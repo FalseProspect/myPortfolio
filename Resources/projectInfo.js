@@ -139,6 +139,6 @@ let about =
     - <a href="falseprospect.com">Falseprospect.com</a><br><br>
     - <strong><a href="https://www.youtube.com/channel/UC8En5066aTr431za71f2pAQ/about" target="_blank">Youtube</a></strong><br><br>
     - <strong><a href="https://github.com/FalseProspect" target="_blank">Github</a></strong><br><br>
-    - <strong><a href="https://1drv.ms/b/s!Aja1MtLUSXL2gievW_hpuCYw59bZ" target="_blank">Resume</a></strong><br><br>`
+    - <strong><a href="https://1drv.ms/b/s!Aja1MtLUSXL2gidY0HCu80E93Z-d" target="_blank">Resume</a></strong><br><br>`
   }
 ;
